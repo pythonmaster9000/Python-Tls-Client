@@ -2,6 +2,7 @@ from .cookies import cookiejar_from_dict, RequestsCookieJar
 from .structures import CaseInsensitiveDict
 
 from typing import Union
+import base64
 import json
 
 
@@ -75,4 +76,9 @@ def build_response(res: Union[dict, list], res_cookies: RequestsCookieJar) -> Re
     response.text = res["body"]
     # Add response content (bytes)
     response._content = res["body"].encode()
+    # Add content for isByteResponse
+    try:
+        response.byte_content = base64.urlsafe_b64decode(res["body"].split(",")[1])
+    except ValueError:
+        response.byte_content = b''
     return response
