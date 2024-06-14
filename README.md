@@ -1,5 +1,5 @@
 # Python-TLS-Client
-Python-TLS-Client is an advanced HTTP library based on requests and tls-client.
+Python-TLS-Client is an advanced HTTP library based on requests and tls-client. To use this fork to download images, etc. add byte_response=True kwarg when making a request. Write response.byte_content to files.
 
 # Installation
 ```
