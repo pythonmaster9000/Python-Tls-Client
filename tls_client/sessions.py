@@ -314,6 +314,7 @@ class Session:
         insecure_skip_verify: Optional[bool] = False,
         timeout_seconds: Optional[int] = None,
         proxy: Optional[dict] = None  # Optional[dict[str, str]]
+        byte_response: bool = False  # Set to True if request is for content
     ) -> Response:
         # --- URL ------------------------------------------------------------------------------------------------------
         # Prepare URL - add params to url
@@ -397,6 +398,7 @@ class Session:
             "headerOrder": self.header_order,
             "insecureSkipVerify": insecure_skip_verify,
             "isByteRequest": is_byte_request,
+            "isByteResponse": byte_response, # adding byte response
             "additionalDecode": self.additional_decode,
             "proxyUrl": proxy,
             "requestUrl": url,
